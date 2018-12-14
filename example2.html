@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS</title>
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="showInfo">
+    <img src="{{student.photo}}"/>
+    <ul>
+        <li>Họ và tên: {{student.fullName}}</li>
+        <li>Ngày sinh: {{student.birthday}}</li>
+        <li>Giới tính: {{student.gender}}</li>
+        <li>Quê quán: {{student.province}}</li>
+
+    </ul>
+</div>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("showInfo", function ($scope) {
+        $scope.student = {
+            fullName : "Trần Trung Hiếu",
+            birthday : "26-06-1997",
+            gender : "Name",
+            province : "Hà Nam",
+            photo : "imgs/picture.jpg"
+        };
+    });
+</script>
+
+</body>
+</html>
