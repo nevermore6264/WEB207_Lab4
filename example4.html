@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Example4</title>
     <script src="js/angular.min.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/ex4.js"></script>
+
 </head>
 <body>
 <div ng-app="myApp" ng-controller="showCalc" class="col-sm-4">
-    <form>
+    <form name="myForm">
         <div class="form-group">
             <label>Chiều dài</label>
-            <input type="text" ng-model="length" class="form-control"/>
+            <input type="text" ng-model="length" name="length" class="form-control" ng-required="true"
+                   required="required"/>
+            <span style="color:red" ng-show="myForm.length.$dirty && myForm.length.$invalid">
+<span ng-show="myForm.length.$error.required">Vui lòng nhập chiều dài</span>
+</span>
         </div>
 
         <div class="form-group">
             <label>Chiều rộng</label>
-            <input type="text" ng-model="width" class="form-control"/>
+            <input type="text" ng-model="width" name="width" class="form-control" required="required"/>
+            <span style="color:red" ng-show="myForm.width.$dirty && myForm.width.$invalid">
+                <span ng-show="myForm.width.$error.required">Vui lòng nhập chiều rộng</span></span>
         </div>
 
         <div class="form-group">
@@ -38,19 +46,5 @@
         </div>
     </form>
 </div>
-
-<script>
-    var app = angular.module("myApp", []);
-
-    app.controller("showCalc", function ($scope) {
-        $scope.calculate = function () {
-            var a = parseFloat($scope.width);
-            var b = parseFloat($scope.length);
-            $scope.acreage = a * b;
-            $scope.perimeter = (a + b) * 2;
-
-        }
-    });
-</script>
 </body>
 </html>
